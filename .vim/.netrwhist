@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/mauricio/Documents/stori/bureau'
+let g:netrw_dirhist_4='/home/mauricio/Documents/stori/bureau/reports'
+let g:netrw_dirhist_3='/home/mauricio/Documents/tesis/parallel'
 let g:netrw_dirhist_2='/home/mauricio/Documents/tesis/scripts/correlation_matrices'
 let g:netrw_dirhist_1='/etc/ssh'

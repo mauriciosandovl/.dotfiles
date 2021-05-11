@@ -87,24 +87,41 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
+# some more aliases
 alias la='lt -la'
 alias lt='ls -lt'
-alias mv="mv -i"        # -i prompts before overwrite
-alias cp="cp -i"        # -i prompts before overwrite
+alias mv='mv -i'        # -i prompts before overwrite
+alias cp='cp -i'        # -i prompts before overwrite
 alias mkdir='mkdir -p'  # -p make parent dirs as needed
-alias df='df -h'        # -h prints human readable format
+alias df='df -h'        # -h prints memory in human readable format
 alias open='xdg-open'   # abbreviation for open an archive
 alias sql='sqlite3'
+alias jl='jupyter lab'
+take() {
+    mkdir $1 && cd $1
+}
+
+# Git shortcuts
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit -m'
+
+# IFC
 alias ifc='ssh -p 6112 msandoval@132.248.16.17' # Connect to ifc via ssh
-# Send a document to ifc computer
 ifcs() {
-scp -P 6112 $1 msandoval@132.248.16.17:~
+# Send a document to ifc computer
+    scp -P 6112 $1 msandoval@132.248.16.17:~
 }
-# Bring a documento from ifc computer
 ifcb() {
-scp -P 6112 msandoval@132.248.16.17:$1 .
+# Bring a document from ifc computer
+    scp -P 6112 msandoval@132.248.16.17:$1 .
 }
+
+# Stori
+alias rs='ssh -i ~/.ssh/cf-redshift.pem ec2-user@54.221.41.132 -L 5439:redshift-prod.cccfwedqmkxj.us-east-1.redshift.amazonaws.com:5439 -nNt'
+# Environment variables for Redshift conection
+export RS_USER='mauricio_sandoval'
+export RS_PASSWORD='8@*6~d[D)8JHa4eS'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -132,14 +149,14 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/mauricio/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/mauricio/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/mauricio/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/mauricio/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/mauricio/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mauricio/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/mauricio/anaconda3/bin:$PATH"
+        export PATH="/home/mauricio/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
