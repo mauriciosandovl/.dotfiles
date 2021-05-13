@@ -109,11 +109,11 @@ alias gc='git commit -m'
 # IFC
 alias ifc='ssh -p 6112 msandoval@132.248.16.17' # Connect to ifc via ssh
 ifcs() {
-# Send a document to ifc computer
+# Send a file to ifc computer
     scp -P 6112 $1 msandoval@132.248.16.17:~
 }
 ifcb() {
-# Bring a document from ifc computer
+# Bring a file from ifc computer
     scp -P 6112 msandoval@132.248.16.17:$1 .
 }
 
