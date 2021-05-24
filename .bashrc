@@ -105,6 +105,7 @@ take() {
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit -m'
+alias gl='git log'
 
 # IFC
 alias ifc='ssh -p 6112 msandoval@132.248.16.17' # Connect to ifc via ssh
@@ -121,7 +122,7 @@ ifcb() {
 alias rs='ssh -i ~/.ssh/cf-redshift.pem ec2-user@54.221.41.132 -L 5439:redshift-prod.cccfwedqmkxj.us-east-1.redshift.amazonaws.com:5439 -nNt'
 # Environment variables for Redshift conection
 export RS_USER='mauricio_sandoval'
-export RS_PASSWORD='8@*6~d[D)8JHa4eS'
+export RS_PASS='8@*6~d[D)8JHa4eS'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
