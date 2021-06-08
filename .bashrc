@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -90,13 +90,17 @@ fi
 # some more aliases
 alias la='lt -la'
 alias lt='ls -lt'
+alias ip='curl ifconfig.me && echo ""'
 alias mv='mv -i'        # -i prompts before overwrite
 alias cp='cp -i'        # -i prompts before overwrite
-alias mkdir='mkdir -p'  # -p make parent dirs as needed
 alias df='df -h'        # -h prints memory in human readable format
+alias mkdir='mkdir -p'  # -p make parent dirs as needed
 alias open='xdg-open'   # abbreviation for open an archive
+alias ux='chmod u+x'
+alias src='source .bashrc'
 alias sql='sqlite3'
 alias jl='jupyter lab'
+alias jl-ssh='ssh -N -L 8080:localhost:8080 ec2'
 take() {
     mkdir $1 && cd $1
 }
@@ -107,22 +111,10 @@ alias ga='git add'
 alias gc='git commit -m'
 alias gl='git log'
 
-# IFC
-alias ifc='ssh -p 6112 msandoval@132.248.16.17' # Connect to ifc via ssh
-ifcs() {
-# Send a file to ifc computer
-    scp -P 6112 $1 msandoval@132.248.16.17:~
-}
-ifcb() {
-# Bring a file from ifc computer
-    scp -P 6112 msandoval@132.248.16.17:$1 .
-}
-
 # Stori
+source ~/.cred
 alias rs='ssh -i ~/.ssh/cf-redshift.pem ec2-user@54.221.41.132 -L 5439:redshift-prod.cccfwedqmkxj.us-east-1.redshift.amazonaws.com:5439 -nNt'
-# Environment variables for Redshift conection
-export RS_USER='mauricio_sandoval'
-export RS_PASS='8@*6~d[D)8JHa4eS'
+alias ec2='ssh -i ~/.ssh/smauricio-pri.pem smauricio@3.85.246.164'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
