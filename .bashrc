@@ -88,8 +88,8 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more aliases
-alias la='lt -la'
-alias lt='ls -lt'
+alias la='lt -lah'
+alias lt='ls -lth'
 alias ip='curl ifconfig.me && echo ""'
 alias mv='mv -i'        # -i prompts before overwrite
 alias cp='cp -i'        # -i prompts before overwrite
@@ -97,7 +97,7 @@ alias df='df -h'        # -h prints memory in human readable format
 alias mkdir='mkdir -p'  # -p make parent dirs as needed
 alias open='xdg-open'   # abbreviation for open an archive
 alias ux='chmod u+x'
-alias src='source .bashrc'
+alias src='source ~/.bashrc'
 alias sql='sqlite3'
 alias jl='jupyter lab'
 alias jl-ssh='ssh -N -L 8080:localhost:8080 ec2'
