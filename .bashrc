@@ -88,9 +88,11 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more aliases
+# Enanble fn keys on external keyboard
+alias fn='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 alias la='lt -lah'
 alias lt='ls -lth'
-alias ip='curl ifconfig.me && echo ""'
+alias pub-ip='dig TXT +short o-o.myaddr.l.google.com @ns1.google.com'
 alias mv='mv -i'        # -i prompts before overwrite
 alias cp='cp -i'        # -i prompts before overwrite
 alias df='df -h'        # -h prints memory in human readable format
@@ -104,6 +106,11 @@ alias jl-ssh='ssh -N -L 8080:localhost:8080 ec2'
 take() {
     mkdir $1 && cd $1
 }
+py() {
+    python -c "print($1)"
+}
+# Airflow
+export AIRFLOW_HOME=~/airflow
 
 # Git shortcuts
 alias gs='git status'
@@ -113,8 +120,10 @@ alias gl='git log'
 
 # Stori
 source ~/.cred
-alias rs='ssh -i ~/.ssh/cf-redshift.pem ec2-user@54.221.41.132 -L 5439:redshift-prod.cccfwedqmkxj.us-east-1.redshift.amazonaws.com:5439 -nNt'
-alias ec2='ssh -i ~/.ssh/smauricio-pri.pem smauricio@3.85.246.164'
+alias rs='ssh -i $EC2_PEM $EC2_USER@3.85.246.164 -L 5439:redshift-prod.cccfwedqmkxj.us-east-1.redshift.amazonaws.com:5439 -nNt'
+alias ec2='ssh -i $EC2_PEM EC2_USER@3.85.246.164'
+# Turn on Stori MX vpn
+alias vpn='nmcli con up 6f391e8c-9767-4398-a9c6-dd0b48555f49'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -154,4 +163,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
