@@ -22,3 +22,6 @@ set background=dark
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=238 
+
+scriptencoding utf-8
+set encoding=utf-8

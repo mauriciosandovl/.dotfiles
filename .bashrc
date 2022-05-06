@@ -96,7 +96,9 @@ alias mkdir='mkdir -p'  # -p make parent dirs as needed
 alias df='df -h'        # -h prints memory in human readable format
 alias open='xdg-open'   # abbreviation for open an archive
 alias sql='sqlite3'
-alias jl='jupyter lab'
+alias jl='jupyter lab --no-browser --port=8080'
+alias src='source ~/.bashrc'
+alias ps_cron='pstree -ap `pidof crond`' # Looks for running cronjobs
 take() {
     mkdir $1 && cd $1
 }
@@ -104,24 +106,16 @@ take() {
 # Git shortcuts
 alias gs='git status'
 alias ga='git add'
+alias gd='git diff'
 alias gc='git commit -m'
+alias gb='git branch -a'
+alias gco='git checkout'
 
-# IFC
-alias ifc='ssh -p 6112 msandoval@132.248.16.17' # Connect to ifc via ssh
-ifcs() {
-# Send a file to ifc computer
-    scp -P 6112 $1 msandoval@132.248.16.17:~
-}
-ifcb() {
-# Bring a file from ifc computer
-    scp -P 6112 msandoval@132.248.16.17:$1 .
-}
 
 # Stori
+. ~/.cred
 alias rs='ssh -i ~/.ssh/cf-redshift.pem ec2-user@54.221.41.132 -L 5439:redshift-prod.cccfwedqmkxj.us-east-1.redshift.amazonaws.com:5439 -nNt'
-# Environment variables for Redshift conection
-export RS_USER='mauricio_sandoval'
-export RS_PASSWORD='8@*6~d[D)8JHa4eS'
+export PATH=/opt/conda/bin/:$PATH
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -146,19 +140,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/mauricio/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/mauricio/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/mauricio/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/mauricio/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
